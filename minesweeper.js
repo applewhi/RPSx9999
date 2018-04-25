@@ -63,25 +63,24 @@ moveOneValue,moveTwoType,moveTwoValue,moveThreeType,moveThreeValue) {
 
 
 function setComputerMoves(){
-  let roundNumber = 1;
+  for (roundNumber = 1, roundNumber <=3, roundNumber++){
 
   switch (roundNumber){
     case 1:
     return playerTwoMoveOneType = randomMoveType();
     return playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
-    roundNumber++;
     break;
 
     case 2:
     return playerTwoMoveTwoType = randomMoveType();
     return playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
-    roundNumber++;
     break;
 
     default
     return playerTwoMoveThreeType = randomMoveType();
     return playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
     break;
+  }
   }
 }
 
