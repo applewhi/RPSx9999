@@ -63,25 +63,32 @@ moveOneValue,moveTwoType,moveTwoValue,moveThreeType,moveThreeValue) {
 
 
 function setComputerMoves(){
-  for (roundNumber = 1, roundNumber <=3, roundNumber++){
+  for (roundNumber = 1; roundNumber <=3; roundNumber++){
 
   switch (roundNumber){
     case 1:
-    return playerTwoMoveOneType = randomMoveType();
-    return playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
+    playerTwoMoveOneType = randomMoveType();
+    playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
     break;
 
     case 2:
-    return playerTwoMoveTwoType = randomMoveType();
-    return playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
+    playerTwoMoveTwoType = randomMoveType();
+    playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
     break;
 
-    default
-    return playerTwoMoveThreeType = randomMoveType();
-    return playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
+    default:
+    playerTwoMoveThreeType = randomMoveType();
+    playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
     break;
+    }
   }
-  }
+
+  playerTwoMoveOneType = randomMoveType();
+  playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
+  playerTwoMoveTwoType = randomMoveType();
+  playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
+  playerTwoMoveThreeType = randomMoveType();
+  playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
 }
 
 
@@ -100,9 +107,10 @@ function randomMoveType(){
     return moveType = 'paper'
     break;
 
-    default
+    default:
     return moveType = 'scissors'
     break;
+  }
 }
 
 function isValidMoveType (moveType) {
@@ -188,22 +196,47 @@ function getMoveWinner(
     let playerOneWinCount=0;
     let playerTwoWinCount=0;
 
-    for (roundNumber = 1; roundNumber <=3; roundNumber++){
-      let winner = getRoundWinner(roundNumber);
+    if(inputsSet()){
 
-      if (winner ==='Player One'){
-      playerOneWinCount+=1;
-    }
-      else if (winner ==='Player Two'){
-      playerTwoWinCount+=1;
-    }
-    /* it's a tie*/
-    }
+      for (roundNumber = 1; roundNumber <=3; roundNumber++){
+        let winner = getRoundWinner(roundNumber);
 
-    if (playerOneWinCount > playerTwoWinCount){
-      return 'Player One';}
-    else if (playerOneWinCount < playerTwoWinCount){
-      return 'Player Two';}
-    else return 'Tie';
+        if (winner ==='Player One'){
+          playerOneWinCount+=1;
+        }
+        else if (winner ==='Player Two'){
+          playerTwoWinCount+=1;
+        }
+        /* it's a tie*/
+      }
 
+      if (playerOneWinCount > playerTwoWinCount){
+        return 'Player One';
+      }
+      else if (playerOneWinCount < playerTwoWinCount){
+        return 'Player Two';
+      }
+      return 'Tie';
     }
+    return null;
+  }
+
+function inputsSet(){
+  playerOneMoveOneType&&
+  playerOneMoveOneValue&&
+
+  playerOneMoveTwoType&&
+  playerOneMoveTwoValue&&
+
+  playerOneMoveThreeType&&
+  playerOneMoveThreeValue&&
+
+  playerTwoMoveOneType&&
+  playerTwoMoveOneValue&&
+
+  playerTwoMoveTwoType&&
+  playerTwoMoveTwoValue&&
+
+  playerTwoMoveThreeType&&
+  playerTwoMoveThreeValue&&
+}
