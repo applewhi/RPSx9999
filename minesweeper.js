@@ -47,14 +47,53 @@ moveOneValue,moveTwoType,moveTwoValue,moveThreeType,moveThreeValue) {
     playerOneMoveThreeValue = moveThreeValue;
   }
   else if (Player === 'Player Two'){
-
-    playerTwoMoveOneType = moveOneType;
-    playerTwoMoveOneValue = moveOneValue;
-    playerTwoMoveTwoType = moveTwoType;
-    playerTwoMoveTwoValue = moveTwoValue;
-    playerTwoMoveThreeType = moveThreeType;
-    playerTwoMoveThreeValue = moveThreeValue;
+     setComputerMoves();
   }
+}
+
+
+function setComputerMoves(){
+  let roundNumber = 1;
+
+  switch (roundNumber){
+    case 1:
+    return playerTwoMoveOneType = randomMoveType();
+    return playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
+    roundNumber++;
+    break;
+
+    case 2:
+    return playerTwoMoveTwoType = randomMoveType();
+    return playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
+    roundNumber++;
+    break;
+
+    default
+    return playerTwoMoveThreeType = randomMoveType();
+    return playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
+    break;
+  }
+}
+
+
+function randomMoveType(){
+  let moveType;
+
+  //creates a random number, 1 or 2
+  let randomNumber = Math.ceiling(Math.random()*2);
+
+  switch(randomNumber){
+    case 1:
+    return moveType = 'rock'
+    break;
+
+    case 2:
+    return moveType = 'paper'
+    break;
+
+    default
+    return moveType = 'scissors'
+    break;
 }
 
 function isValidMoveType (moveType) {
