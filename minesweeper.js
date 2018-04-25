@@ -48,6 +48,16 @@ moveOneValue,moveTwoType,moveTwoValue,moveThreeType,moveThreeValue) {
   }
   else if (Player === 'Player Two'){
      setComputerMoves();
+
+/*  CODE FOR CREATING MANUAL PLAYS FOR PLAYER 2
+    playerTwoMoveOneType = moveOneType;
+    playerTwoMoveOneValue = moveOneValue;
+    playerTwoMoveTwoType = moveTwoType;
+    playerTwoMoveTwoValue = moveTwoValue;
+    playerTwoMoveThreeType = moveThreeType;
+    playerTwoMoveThreeValue = moveThreeValue;
+    */
+
   }
 }
 
