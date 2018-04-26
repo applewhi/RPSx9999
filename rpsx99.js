@@ -47,16 +47,15 @@ moveOneValue,moveTwoType,moveTwoValue,moveThreeType,moveThreeValue) {
     playerOneMoveThreeValue = moveThreeValue;
   }
   else if (Player === 'Player Two'){
-     setComputerMoves();
 
-/*  CODE FOR CREATING MANUAL PLAYS FOR PLAYER 2
+//  CODE FOR CREATING MANUAL PLAYS FOR PLAYER 2
     playerTwoMoveOneType = moveOneType;
     playerTwoMoveOneValue = moveOneValue;
     playerTwoMoveTwoType = moveTwoType;
     playerTwoMoveTwoValue = moveTwoValue;
     playerTwoMoveThreeType = moveThreeType;
     playerTwoMoveThreeValue = moveThreeValue;
-    */
+
 
   }
 }
@@ -68,12 +67,12 @@ function setComputerMoves(){
   switch (roundNumber){
     case 1:
     playerTwoMoveOneType = randomMoveType();
-    playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
+    playerTwoMoveOneValue = Math.ceil(Math.random()*96);
     break;
 
     case 2:
     playerTwoMoveTwoType = randomMoveType();
-    playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
+    playerTwoMoveTwoValue = Math.ceil(Math.random()*(98 - playerTwoMoveOneValue));
     break;
 
     default:
@@ -84,31 +83,29 @@ function setComputerMoves(){
   }
 
   playerTwoMoveOneType = randomMoveType();
-  playerTwoMoveOneValue = Math.ceiling(Math.random()*96);
+  playerTwoMoveOneValue = Math.floor(Math.random()*97)+1;
   playerTwoMoveTwoType = randomMoveType();
-  playerTwoMoveTwoValue = Math.ceiling(Math.random()*(98 - playerTwoMoveOneValue));
+  playerTwoMoveTwoValue = Math.floor(Math.random()*(97 - playerTwoMoveOneValue))+1;
   playerTwoMoveThreeType = randomMoveType();
-  playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue;
+  playerTwoMoveThreeValue = 99 - playerTwoMoveTwoValue - playerTwoMoveOneValue;
 }
 
 
 function randomMoveType(){
-  let moveType;
-
   //creates a random number, 1 or 2
-  let randomNumber = Math.ceiling(Math.random()*2);
+  let randomNumber = Math.ceil(Math.random()*2);
 
   switch(randomNumber){
     case 1:
-    return moveType = 'rock'
+    return 'rock'
     break;
 
     case 2:
-    return moveType = 'paper'
+    return 'paper'
     break;
 
     default:
-    return moveType = 'scissors'
+    return 'scissors'
     break;
   }
 }
@@ -222,7 +219,7 @@ function getMoveWinner(
   }
 
 function inputsSet(){
-  playerOneMoveOneType&&
+  return playerOneMoveOneType&&
   playerOneMoveOneValue&&
 
   playerOneMoveTwoType&&
@@ -238,5 +235,5 @@ function inputsSet(){
   playerTwoMoveTwoValue&&
 
   playerTwoMoveThreeType&&
-  playerTwoMoveThreeValue&&
+  playerTwoMoveThreeValue;
 }
